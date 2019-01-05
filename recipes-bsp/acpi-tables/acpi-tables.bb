@@ -20,7 +20,7 @@ B = "${WORKDIR}/acpi-tables"
 
 inherit deploy
 
-RDEPENDS_${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'acpi', 'libgpiod', '', d)}"
+RDEPENDS_${PN} = "libgpiod"
 
 ACPI_TABLES ?= ""
 ACPI_TABLES[doc] = "List of ACPI tables to include with the initrd"
