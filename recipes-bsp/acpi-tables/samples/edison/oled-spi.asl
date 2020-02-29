@@ -27,7 +27,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-DefinitionBlock ("oled-spi.aml", "SSDT", 5, "Vendor", "OLED-SPI", 1)
+DefinitionBlock ("oledspi.aml", "SSDT", 5, "Vendor", "OLEDSPI", 1)
 {
     #define MUX_I2C
     #define MUX_SPI

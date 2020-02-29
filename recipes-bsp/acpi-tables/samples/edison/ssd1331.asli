@@ -33,8 +33,8 @@ External (\_SB.PCI0.SPI5, DeviceObj)
 
 Scope (\_SB.PCI0.SPI5)
 {
-    Device (OLED) {
-        Name (_HID, "SSD1331")
+    Device (OLE0) {
+        Name (_HID, "PRP0001")
         Name (_DDN, "zjy 65k color OLED")
         Name (_CRS, ResourceTemplate () {
             SpiSerialBus (
@@ -63,17 +63,12 @@ Scope (\_SB.PCI0.SPI5)
             ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
             Package () {
                 Package () { "compatible", Package () { "solomon,ssd1331" } },
-                Package () { "dc-gpios", Package () { ^OLED, 0, 0, 0 } },
-                Package () { "reset-gpios", Package () { ^OLED, 1, 0, 1 } },
+                Package () { "dc-gpios", Package () { ^OLE0, 0, 0, 0 } },
+                Package () { "reset-gpios", Package () { ^OLE0, 1, 0, 1 } },
                 Package () { "width", 96 },
                 Package () { "height", 64 },
                 Package () { "buswidth", 8 },
-            },
-            ToUUID("dbb8e3e6-5886-4ba6-8795-1319f52a966b"),	
-            Package () {	
-                Package () {"oled-dc", "ODDC"},	
-                Package () {"oled-rst", "ODRT"},	
-            }	
+            }
         })
     }
 }
