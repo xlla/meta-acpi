@@ -34,7 +34,7 @@ External (\_SB.PCI0.SPI5, DeviceObj)
 Scope (\_SB.PCI0.SPI5)
 {
     Device (OLED) {
-        Name (_HID, "PRP0001")
+        Name (_HID, "SSD1331")
         Name (_DDN, "zjy 65k color OLED")
         Name (_CRS, ResourceTemplate () {
             SpiSerialBus (
@@ -43,16 +43,16 @@ Scope (\_SB.PCI0.SPI5)
                 FourWireMode,           // Full duplex
                 8,                      // Bits per word is 8 (byte)
                 ControllerInitiated,    // Don't care
-                16000000,               // 16 MHz
+                6000000,               // 6 MHz
                 ClockPolarityLow,       // SPI mode 0
                 ClockPhaseFirst,        // SPI mode 0
                 "\\_SB.PCI0.SPI5",      // SPI host controller
                 0                       // Must be 0
             )
-            GpioIo(Exclusive, PullDown, 0, 0, IoRestrictionOutputOnly,
+            GpioIo(Exclusive, PullDefault, 0, 0, IoRestrictionOutputOnly,
                 "\\_SB.PCI0.GPIO", 0, ResourceConsumer, , ) { 49 }
             GpioIo(Exclusive, PullUp, 0, 0, IoRestrictionOutputOnly,
-                "\\_SB.PCI0.GPIO", 0, ResourceConsumer, , ) { 183 }
+                "\\_SB.PCI0.GPIO", 0, ResourceConsumer, , ) { 48 }
         })
 
         /*
@@ -68,7 +68,12 @@ Scope (\_SB.PCI0.SPI5)
                 Package () { "width", 96 },
                 Package () { "height", 64 },
                 Package () { "buswidth", 8 },
-            }
+            },
+            ToUUID("dbb8e3e6-5886-4ba6-8795-1319f52a966b"),	
+            Package () {	
+                Package () {"oled-dc", "ODDC"},	
+                Package () {"oled-rst", "ODRT"},	
+            }	
         })
     }
 }

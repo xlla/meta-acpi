@@ -44,7 +44,7 @@ DefinitionBlock ("spidev.aml", "SSDT", 5, "", "SPIDEV", 1)
                     FourWireMode,           // Full duplex
                     8,                      // Bits per word is 8 (byte)
                     ControllerInitiated,    // Don't care
-                    1000000,                // 1 MHz
+                    6000000,                // 6 MHz
                     ClockPolarityLow,       // SPI mode 0
                     ClockPhaseFirst,        // SPI mode 0
                     "\\_SB.PCI0.SPI5",      // SPI host controller
