@@ -33,7 +33,7 @@ DefinitionBlock ("oledspi.aml", "SSDT", 5, "Vendor", "OLEDSPI", 1)
     #define MUX_SPI
     #define MUX_UART_2WIRE
 
-#define DIG7_PU_PD_HOG	Name (REPU, Package () { ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"), Package () { Package () { "gpio-hog", 1 }, Package () { "gpios", Package () { 7, 0 } }, Package () { "output-high", 1 }, Package () { "line-name", "oled-reset-pu" }, } })
+#define DIG7_PU_PD_HOG	Name (REPU, Package () { ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"), Package () { Package () { "gpio-hog", 1 }, Package () { "gpios", Package () { 7, 0 } }, Package () { "input", 1 }, Package () { "line-name", "oled-reset-pu" }, } })
 #define DIG7_PU_PD_REF	Package () { "oled-reset-pu", "REPU" },
 #define CONF_DIG7_PU_PD
 
