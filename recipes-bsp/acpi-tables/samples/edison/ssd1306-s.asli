@@ -1,9 +1,9 @@
 /*
  * Intel Edison
  *
- * This adds SSD1331 96x64 display device ,0.95inch, 65535 color OLED 
+ * This adds SSD1306 128x64 oled display device 
  *
- * In Linux you need to set CONFIG_FB_TFT_SSD1331=y (or m) to be able to use
+ * In Linux you need to set CONFIG_FB_TFT_SSD1306=y (or m) to be able to use
  * this device.
  *
  * Copyright (C) 2019, Intel Corporation
@@ -29,32 +29,23 @@
  * Include this file from an ASL providing SSDT DefinitionBlock.
  */
 
-External (\_SB.PCI0.SPI5, DeviceObj)
+External (\_SB.PCI0.I2C6, DeviceObj)
 
-Scope (\_SB.PCI0.SPI5)
+Scope (\_SB.PCI0.I2C6)
 {
-    Device (OLE0) {
+    Device (OLED) {
         Name (_HID, "PRP0001")
-        Name (_DDN, "zjy 65k color OLED")
+        Name (_DDN, "ssd1306 oled")
         Name (_CRS, ResourceTemplate () {
-            SpiSerialBus (
-                1,                      // Chip select
-                PolarityLow,            // Chip select is active low
-                FourWireMode,           // Full duplex
-                8,                      // Bits per word is 8 (byte)
+            I2cSerialBus (
+                0x3C,                   // Bus address
                 ControllerInitiated,    // Don't care
-                1000000,               // 1 MHz
-                ClockPolarityLow,       // SPI mode 0
-                ClockPhaseFirst,        // SPI mode 0
-                "\\_SB.PCI0.SPI5",      // SPI host controller
+                400000,                 // Fast mode (400 kHz)
+                AddressingMode7Bit,     // 7-bit addressing
+                "\\_SB.PCI0.I2C6",      // I2C host controller
                 0                       // Must be 0
             )
-            GpioIo(Exclusive, PullDefault, 0, 0, IoRestrictionOutputOnly,
-                "\\_SB.PCI0.GPIO", 0, ResourceConsumer, , ) { 49 }
-            GpioIo(Exclusive, PullUp, 0, 0, IoRestrictionOutputOnly,
-                "\\_SB.PCI0.GPIO", 0, ResourceConsumer, , ) { 48 }
         })
-
         /*
          * See drivers/staging/fbtft/fbtft-core.c::fbtft_properties_read()
          * for more information about these bindings.
@@ -62,10 +53,8 @@ Scope (\_SB.PCI0.SPI5)
         Name (_DSD, Package () {
             ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
             Package () {
-                Package () { "compatible", Package () { "solomon,ssd1331" } },
-                Package () { "dc-gpios", Package () { ^OLE0, 0, 0, 0 } },
-                Package () { "reset-gpios", Package () { ^OLE0, 1, 0, 1 } },
-                Package () { "width", 96 },
+                Package () { "compatible", Package () { "solomon,ssd1306" } },
+                Package () { "width", 128 },
                 Package () { "height", 64 },
                 Package () { "buswidth", 8 },
             }
