@@ -41,12 +41,12 @@ DefinitionBlock ("oledspi.aml", "SSDT", 5, "Vendor", "OLEDSPI", 1)
 #define MUX32_DIR_REF	Package () { "oled-reset-mux", "REMX" },
 #define CONF_MUX32_DIR
 
-#define DIG8_PU_PD_HOG  Name (DCPU, Package () { ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"), Package () { Package () { "gpio-hog", 1 }, Package () { "gpios", Package () { 8, 0 } }, Package () { "input", 1 }, Package () { "line-name", "oled-cmd-pu" }, } })
-#define DIG8_PU_PD_REF  Package () { "oled-cmd-pu", "DCPU" },
+#define DIG8_PU_PD_HOG  Name (DCPU, Package () { ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"), Package () { Package () { "gpio-hog", 1 }, Package () { "gpios", Package () { 8, 0 } }, Package () { "input", 1 }, Package () { "line-name", "oled-dc-pu" }, } })
+#define DIG8_PU_PD_REF  Package () { "oled-dc-pu", "DCPU" },
 #define CONF_DIG8_PU_PD
 
-#define MUX30_DIR_HOG	Name (DCMX, Package () { ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"), Package () { Package () { "gpio-hog", 1 }, Package () { "gpios", Package () { 8, 0 } }, Package () { "output-high", 1 }, Package () { "line-name", "oled-cmd-mux" }, } })
-#define MUX30_DIR_REF	Package () { "oled-cmd-mux", "DCMX" },
+#define MUX30_DIR_HOG	Name (DCMX, Package () { ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"), Package () { Package () { "gpio-hog", 1 }, Package () { "gpios", Package () { 8, 0 } }, Package () { "output-high", 1 }, Package () { "line-name", "oled-dc-mux" }, } })
+#define MUX30_DIR_REF	Package () { "oled-dc-mux", "DCMX" },
 #define CONF_MUX30_DIR
 
    #include "arduino.asli"

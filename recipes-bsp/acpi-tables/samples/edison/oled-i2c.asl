@@ -1,10 +1,10 @@
 /*
  * Intel Edison
  *
- * This adds ssd1331 SPI oled screen device to the SPI host controller available on
+ * This adds ssd1306 i2c oled screen device to the i2c host controller available on
  * Edison Arduino breadboard.
  *
- * In Linux you need to set CONFIG_SPI_SPIDEV=y (or m) to be able to use
+ * In Linux you need to set CONFIG_FB_SSD1307=y (or m) to be able to use
  * this device.
  *
  * Copyright (C) 2017, Intel Corporation

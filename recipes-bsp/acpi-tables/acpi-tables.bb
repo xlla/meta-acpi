@@ -23,7 +23,7 @@ inherit deploy
 
 RDEPENDS_${PN}_edison = "libgpiod"
 
-ACPI_TABLES ?= ""
+ACPI_TABLES = "leds.asl oled-spi.asl oled-i2c.asl spidev.asl"
 ACPI_TABLES[doc] = "List of ACPI tables to include with the initrd"
 ACPI_FEATURES_edison ?= "uart_2w spi i2c"
 IASLFLAGS = " \

@@ -53,7 +53,7 @@ Scope (\_SB.PCI0.I2C6)
         Name (_DSD, Package () {
             ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
             Package () {
-                Package () { "compatible", Package () { "solomon,ssd1306" } },
+                Package () { "compatible", Package () { "solomon,ssd1306fb-i2c" } },
                 Package () { "width", 128 },
                 Package () { "height", 64 },
                 Package () { "buswidth", 8 },

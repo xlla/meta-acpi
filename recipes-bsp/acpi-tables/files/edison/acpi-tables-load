@@ -1,13 +1,17 @@
 #!/bin/sh
 # This script loads all ACPI tables from /kernel/firmware/acpi
 # You must have configfs enabled for this to work
-
-    find /kernel/firmware/acpi/ -type f -name "*.aml" 2>/dev/null | while read TABLE; do
+for table in "$@" 
+do
+   echo "install $table ..."
+#    find /kernel/firmware/acpi/ -type f -name "*.aml" 2>/dev/null | while read TABLE; do
+     TABLE="/kernel/firmware/acpi/${table}.aml"
         dest_dir=$(basename $TABLE .aml)
         mkdir /sys/kernel/config/acpi/table/$dest_dir
         cat $TABLE > /sys/kernel/config/acpi/table/$dest_dir/aml
-    done
+done
 
-    sleep 0.1
-    gpioset `gpiofind TRI_STATE_ALL`=0
-    gpioset `gpiofind TRI_STATE_ALL`=1
+sleep 0.1
+gpioset `gpiofind TRI_STATE_ALL`=0
+gpioset `gpiofind TRI_STATE_ALL`=1
+echo "done."

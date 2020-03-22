@@ -51,7 +51,7 @@ Scope (\_SB)
                 "\\_SB.PCI0.GPIO",          // GPIO controller
                 0)                          // Must be 0
             {
-                40,                         // GP40_I2S_2_CLK
+                13,                         // GP13, D5, blue
             }
         })
 
