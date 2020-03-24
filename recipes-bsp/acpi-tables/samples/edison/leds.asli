@@ -38,7 +38,8 @@ Scope (\_SB)
 {
     Device (LEDS)
     {
-        Name (_HID, "PRP0001")
+        Name (_HID, "LED00D5")
+        Name (_CID, "PRP0001")
         Name (_DDN, "GPIO LEDs device")
 
         Name (_CRS, ResourceTemplate () {
