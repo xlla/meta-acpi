@@ -69,16 +69,16 @@
 #define MUX_UART_2WIRE 0
 #endif
 
+#ifdef CONF_DIG5_PU_PD
+#define DIG5_PU_PD 1
+#else
+#define DIG5_PU_PD 0
+#endif
+
 #ifdef CONF_DIG7_PU_PD
 #define DIG7_PU_PD 1
 #else
 #define DIG7_PU_PD 0
-#endif
-
-#if DIG7_PU_PD
-#define MUX_NIO2 1
-#else
-#define MUX_NIO2 0
 #endif
 
 #ifdef CONF_DIG8_PU_PD
@@ -87,11 +87,14 @@
 #define DIG8_PU_PD 0
 #endif
 
-#if DIG8_PU_PD
+#if DIG5_PU_PD || DIG7_PU_PD || DIG8_PU_PD
 #define MUX_NIO2 1
 #else
 #define MUX_NIO2 0
 #endif
+
+
+
 
 #ifdef CONF_SPI_CLK_SEL
 #define SPI_CLK_SEL 1
@@ -312,6 +315,9 @@ Scope (\_SB.PCI0.I2C1)
                 Package () {"uart1-rts-pu", "URUD"},
 #endif
 #endif
+#if DIG5_PU_PD
+                DIG5_PU_PD_REF
+#endif
 #if DIG7_PU_PD
                 DIG7_PU_PD_REF
 #endif
@@ -369,6 +375,9 @@ Scope (\_SB.PCI0.I2C1)
             }
         })
 #endif
+#endif
+#if DIG5_PU_PD
+        DIG5_PU_PD_HOG
 #endif
 #if DIG7_PU_PD
         DIG7_PU_PD_HOG
