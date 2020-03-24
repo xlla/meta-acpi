@@ -66,7 +66,7 @@ do_install() {
 	install -d ${D}${bindir}
 	install -m 0755 ${WORKDIR}/acpi-tables-load ${D}${bindir}
 	install -d ${D}/${systemd_unitdir}/system
-        install -m 644 ${WORKDIR}/acpi-tables-load.service ${D}/${systemd_unitdir}/system
+    install -m 644 ${WORKDIR}/acpi-tables-load.service ${D}/${systemd_unitdir}/system
 
 }
 
