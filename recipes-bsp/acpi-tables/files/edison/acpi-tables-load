@@ -5,13 +5,18 @@ for table in "$@"
 do
    echo "install $table ..."
 #    find /kernel/firmware/acpi/ -type f -name "*.aml" 2>/dev/null | while read TABLE; do
-     TABLE="/kernel/firmware/acpi/${table}.aml"
+     TABLE="/mnt/study/acpi/${table}.aml"
         dest_dir=$(basename $TABLE .aml)
-        mkdir /sys/kernel/config/acpi/table/$dest_dir
-        cat $TABLE > /sys/kernel/config/acpi/table/$dest_dir/aml
+        dest_dir_full="/sys/kernel/config/acpi/table/$dest_dir"
+     if [ -d "$dest_dir_full" ]; then
+        echo "remove exist acpi tables ${table}.aml"
+        rmdir $dest_dir_full  
+     fi
+     mkdir $dest_dir_full   
+     cat $TABLE > $dest_dir_full/aml
 done
 
-sleep 0.1
-gpioset `gpiofind TRI_STATE_ALL`=0
-gpioset `gpiofind TRI_STATE_ALL`=1
-echo "done."
+    sleep 1 
+    gpioset `gpiofind TRI_STATE_ALL`=0
+    gpioset `gpiofind TRI_STATE_ALL`=1
+   echo "done."
