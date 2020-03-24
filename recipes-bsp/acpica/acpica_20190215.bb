@@ -31,6 +31,7 @@ ALTERNATIVE_${PN} = "acpixtract"
 
 EXTRA_OEMAKE = "CC='${CC}' 'OPT_CFLAGS=-Wall'"
 
+DEPENDS += "bison-native"
 do_install() {
     install -D -p -m0755 generate/unix/bin*/iasl ${D}${bindir}/iasl
     install -D -p -m0755 generate/unix/bin*/acpibin ${D}${bindir}/acpibin
