@@ -35,5 +35,5 @@ DefinitionBlock ("oled-i2c.aml", "SSDT", 5, "Vendor", "OLEDI2C", 1)
 
    #include "arduino.asli"
    #include "spidev.asli"
-   #include "ssd1306-s.asli"
+   #include "ssd1306-i2c.asli"
 }
