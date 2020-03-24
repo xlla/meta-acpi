@@ -34,7 +34,8 @@ External (\_SB.PCI0.SPI5, DeviceObj)
 Scope (\_SB.PCI0.SPI5)
 {
     Device (ADC0) {
-        Name (_HID, "PRP0001")
+        Name (_HID, "ADS7951")
+        Name (_CID, "PRP0001")
         Name (_DDN, "Texas Instruments ADS7950 family of A/DC chips")
         Name (_CRS, ResourceTemplate () {
             SpiSerialBus (
