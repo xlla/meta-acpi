@@ -1,7 +1,7 @@
 SUMMARY = "Dump ACPI tables to a file"
 
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
+LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
 do_configure[depends] += "virtual/kernel:do_shared_workdir"
 do_populate_lic[depends] += "virtual/kernel:do_patch"
