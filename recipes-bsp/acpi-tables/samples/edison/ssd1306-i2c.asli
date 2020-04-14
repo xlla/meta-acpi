@@ -34,8 +34,7 @@ External (\_SB.PCI0.I2C6, DeviceObj)
 Scope (\_SB.PCI0.I2C6)
 {
     Device (OLE1) {
-        Name (_HID, "SSD1306")
-        Name (_CID, "PRP0001")
+        Name (_HID, "PRP0001")
         Name (_DDN, "ssd1306 oled")
         Name (_CRS, ResourceTemplate () {
             I2cSerialBusV2 (

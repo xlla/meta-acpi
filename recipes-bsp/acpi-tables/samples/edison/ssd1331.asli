@@ -34,17 +34,16 @@ External (\_SB.PCI0.SPI5, DeviceObj)
 Scope (\_SB.PCI0.SPI5)
 {
     Device (OLE0) {
-        Name (_HID, "SSD1331")
-        Name (_CID, "PRP0001")
+        Name (_HID, "PRP0001")
         Name (_DDN, "zjy 65k color OLED")
         Name (_CRS, ResourceTemplate () {
-            SpiSerialBusV2 (
+            SpiSerialBus (
                 1,                      // Chip select
                 PolarityLow,            // Chip select is active low
                 FourWireMode,           // Full duplex
                 8,                      // Bits per word is 8 (byte)
                 ControllerInitiated,    // Don't care
-                1000000,               // 1 MHz
+                1000000,               // 2 MHz
                 ClockPolarityLow,       // SPI mode 0
                 ClockPhaseFirst,        // SPI mode 0
                 "\\_SB.PCI0.SPI5",      // SPI host controller
