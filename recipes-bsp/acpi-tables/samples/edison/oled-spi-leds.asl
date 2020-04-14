@@ -7,7 +7,7 @@
  * In Linux you need to set CONFIG_SPI_SPIDEV=y (or m) to be able to use
  * this device.
  *
- * Copyright (C) 2017, Intel Corporation
+ * Copyright (C) 2020, xllacyx@hotmail.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-DefinitionBlock ("oled-spi.aml", "SSDT", 5, "Vendor", "OLEDSPI", 1)
+DefinitionBlock ("oled-spi-leds.aml", "SSDT", 5, "Vendor", "OLEDSPI", 1)
 {
     #define MUX_I2C
     #define MUX_SPI
@@ -51,7 +51,16 @@ DefinitionBlock ("oled-spi.aml", "SSDT", 5, "Vendor", "OLEDSPI", 1)
 #define MUX30_DIR_REF	Package () { "oled-dc-mux", "D8MX" },
 #define CONF_MUX30_DIR
 
+//for led D5
+#define DIG5_PU_PD_HOG  Name (D5PU, Package () { ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"), Package () { Package () { "gpio-hog", 1 }, Package () { "gpios", Package () { 5, 0 } }, Package () { "input", 1 }, Package () { "line-name", "led-d5-pu" }, } })
+#define DIG5_PU_PD_REF  Package () { "led-d5-pu", "D5PU" },
+#define CONF_DIG5_PU_PD
+
+#define MUX21_DIR_HOG	Name (D5MX, Package () { ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"), Package () { Package () { "gpio-hog", 1 }, Package () { "gpios", Package () { 5, 0 } }, Package () { "output-high", 1 }, Package () { "line-name", "led-d5-mux" }, } })
+#define MUX21_DIR_REF	Package () { "led-d5-mux", "D5MX" },
+#define CONF_MUX21_DIR
 
    #include "arduino.asli"
    #include "ssd1331.asli"
+   #include "leds.asli"
 }
